@@ -1,4 +1,4 @@
-# SensorsWatch8 📱⌚
+# Sensors Watch 📱⌚
 
 ## Descrição
 
@@ -106,7 +106,7 @@ O aplicativo detecta e monitora todos os sensores disponíveis no dispositivo, i
 ### Build e Execução
 ```bash
 # Clone o repositório
-git clone [url-do-repositorio]
+git clone https://github.com/davigomesflorencio/test_sensors_smartwatch.git
 
 # Abra o projeto no Android Studio
 # Sincronize o projeto com Gradle

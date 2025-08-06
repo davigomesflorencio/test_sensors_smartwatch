@@ -92,7 +92,7 @@ fun SensorTestScreen(
         }
         item {
             Text(
-                text = "Teste de Sensores",
+                text = "Sensors Watch",
                 style = MaterialTheme.typography.body1,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,

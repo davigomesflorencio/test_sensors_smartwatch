@@ -2,11 +2,15 @@ package com.davi.sensorswatch
 
 import android.Manifest
 import android.R
+import android.content.pm.PackageManager
+import android.health.connect.HealthPermissions
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.davi.sensorswatch.presentation.SensorTestScreen
@@ -20,6 +24,25 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setTheme(R.style.Theme_DeviceDefault)
+
+        if (permissions4.any { permission ->
+                ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED
+            }) {
+            ActivityCompat.requestPermissions(this, permissions4, 0)
+        }
+
+        if (permissionsVersion30.any { permission ->
+                ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED
+            }) {
+            ActivityCompat.requestPermissions(this, permissionsVersion30, 0)
+        }
+
+        if (permissionsVersion33.any { permission ->
+                ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED
+            }) {
+            ActivityCompat.requestPermissions(this, permissionsVersion33, 0)
+        }
+
 
         setContent {
             val viewModel: SensorTestViewModel = viewModel()
@@ -52,8 +75,11 @@ class MainActivity : ComponentActivity() {
             Manifest.permission.NEARBY_WIFI_DEVICES,
         )
 
-        val permissionsNotifications = arrayOf(
-            Manifest.permission.POST_NOTIFICATIONS,
+        val permissions4 = arrayOf(
+            HealthPermissions.READ_HEART_RATE,
+            HealthPermissions.READ_OXYGEN_SATURATION,
+            HealthPermissions.READ_SKIN_TEMPERATURE,
+            "com.samsung.android.hardware.sensormanager.permission.READ_ADDITIONAL_HEALTH_DATA"
         )
     }
 }

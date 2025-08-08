@@ -75,7 +75,6 @@ fun SensorTestScreen(
         } else {
             permissionLauncher.launch(permissions)
             permissionLauncher.launch(MainActivity.permissionsVersion33)
-            permissionLauncher.launch(MainActivity.permissionsNotifications)
         }
     }
 
